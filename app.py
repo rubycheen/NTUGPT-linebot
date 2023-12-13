@@ -3,8 +3,13 @@ from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import *
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 app = Flask(__name__)
+
+print(os.environ['CHANNEL_ACCESS_TOKEN'])
+print(os.environ['CHANNEL_SECRET'])
 
 line_bot_api = LineBotApi(os.environ['CHANNEL_ACCESS_TOKEN'])
 handler = WebhookHandler(os.environ['CHANNEL_SECRET'])
@@ -28,5 +33,5 @@ def handle_message(event):
 
 import os
 if __name__ == "__main__":
-    port = int(os.environ.get('PORT', 5000))
+    port = int(os.environ.get('PORT', 12345))
     app.run(host='0.0.0.0', port=port)
