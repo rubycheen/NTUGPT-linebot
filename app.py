@@ -50,7 +50,7 @@ llm = ChatOpenAI(temperature=0, model='gpt-3.5-turbo')
 
 # 透過 ConversationBufferWindowMemory 快速打造一個具有「記憶力」的聊天機器人，可以記住至少五回。
 # 通常來說 5 回還蠻夠的
-memory = ConversationBufferWindowMemory(k=5)
+memory = ConversationBufferWindowMemory(k=1)
 conversation = ConversationChain(
     llm=llm,
     memory=memory,
