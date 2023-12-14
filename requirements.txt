@@ -38,6 +38,8 @@ regex==2023.10.3
 safetensors==0.4.1
 six==1.16.0
 tokenizers==0.15.0
+--find-links https://download.pytorch.org/whl/cpu/torch_stable.html
+torch==2.0.1
 torch==2.1.1
 torchaudio==2.1.1
 torchvision==0.16.1
