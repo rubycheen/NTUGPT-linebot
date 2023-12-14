@@ -6,7 +6,7 @@ openai==0.28.1
 yfinance
 pydantic
 tiktoken
-aiohttp
+aiohttp==3.9.0b0
 fastapi
 langchain
 openai
