@@ -11,13 +11,12 @@ from linebot.models import (
 )
 
 import os
-
+from model import generate_text
 
 app = Flask(__name__)
 
 line_bot_api = LineBotApi(os.getenv("CHANNEL_ACCESS_TOKEN"))
 handler = WebhookHandler(os.getenv("CHANNEL_SECRET"))
-
 
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -42,7 +41,7 @@ def callback():
 def handle_message(event):
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=event.message.text))
+        TextSendMessage(text=generate_text(event.message.text)))
 
 
 if __name__ == "__main__":

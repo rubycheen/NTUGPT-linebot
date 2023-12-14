@@ -9,3 +9,6 @@ Deprecated
 gunicorn
 flask
 line-bot-sdk
+transformers
+huggingface_hub
+transformers
