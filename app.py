@@ -8,12 +8,28 @@ load_dotenv()
 
 app = Flask(__name__)
 
-print(os.environ['CHANNEL_ACCESS_TOKEN'])
-print(os.environ['CHANNEL_SECRET'])
+# print(os.environ['CHANNEL_ACCESS_TOKEN'])
+# print(os.environ['CHANNEL_SECRET'])
 
 line_bot_api = LineBotApi(os.environ['CHANNEL_ACCESS_TOKEN'])
 handler = WebhookHandler(os.environ['CHANNEL_SECRET'])
 
+html = '''
+<!doctype html>
+<html>
+  <head>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>Hello world!</title>
+  </head>
+  <body>
+    <p>Hello world!</p>
+  </body>
+</html>
+'''
+
+@app.route('/', methods=['GET'])
+def index():
+    return html
 
 @app.route("/callback", methods=['POST'])
 def callback():
