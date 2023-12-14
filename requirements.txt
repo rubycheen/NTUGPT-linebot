@@ -1,4 +1,3 @@
-line-bot-sdk==3.5.0
 fastapi
 uvicorn[standard]
 langchain==0.0.308
@@ -7,6 +6,7 @@ yfinance
 pydantic
 tiktoken
 aiohttp==3.9.0b0
+line-bot-sdk
 fastapi
 langchain
 openai
