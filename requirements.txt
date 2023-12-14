@@ -1,4 +1,4 @@
-fastapi
+flask
 gunicorn
 langchain==0.0.308
 openai==0.28.1
@@ -7,7 +7,6 @@ pydantic
 tiktoken
 aiohttp==3.9.0b0
 line-bot-sdk
-fastapi
 langchain
 openai
 python-dotenv
