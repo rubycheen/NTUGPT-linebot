@@ -9,6 +9,5 @@ Deprecated
 gunicorn
 flask
 line-bot-sdk
-transformers
 huggingface_hub
 transformers ==4.35.2
