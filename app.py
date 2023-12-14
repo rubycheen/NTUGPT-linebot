@@ -11,9 +11,9 @@ from langchain.memory import ConversationBufferWindowMemory
 
 
 from linebot import (
-    AsyncLineBotApi
+    AsyncLineBotApi, WebhookHandler
 )
-from linebot.v3.webhook import WebhookParser
+# from linebot.v3.webhook import WebhookParser
 
 from linebot.aiohttp_async_http_client import AiohttpAsyncHttpClient
 from linebot.exceptions import (
@@ -42,7 +42,8 @@ app = FastAPI()
 session = aiohttp.ClientSession()
 async_http_client = AiohttpAsyncHttpClient(session)
 line_bot_api = AsyncLineBotApi(channel_access_token, async_http_client)
-parser = WebhookParser(channel_secret)
+# parser = WebhookParser(channel_secret)
+handler = WebhookHandler(channel_secret)
 
 # Langchain 串接 OpenAI ，這裡 model 可以先選 gpt-3.5-turbo
 llm = ChatOpenAI(temperature=0, model='gpt-3.5-turbo')
@@ -66,7 +67,8 @@ async def handle_callback(request: Request):
     body = body.decode()
 
     try:
-        events = parser.parse(body, signature)
+        events = handler.handle(body, signature)
+        # events = parser.parse(body, signature)
     except InvalidSignatureError:
         raise HTTPException(status_code=400, detail="Invalid signature")
 
