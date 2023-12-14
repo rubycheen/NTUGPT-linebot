@@ -8,3 +8,4 @@ python_dateutil >= 2.5.3
 Deprecated
 gunicorn
 flask
+linebot
