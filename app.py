@@ -3,8 +3,8 @@
 # from linebot.exceptions import InvalidSignatureError
 # from linebot.models import *
 # import os
-from dotenv import load_dotenv
-load_dotenv()
+# from dotenv import load_dotenv
+# load_dotenv()
 
 # app = Flask(__name__)
 
