@@ -7,7 +7,8 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 
 # Loading the tokenizer and model
 tokenizer = AutoTokenizer.from_pretrained("yentinglin/Taiwan-LLM-7B-v2.0-chat")
-model = AutoModelForCausalLM.from_pretrained("yentinglin/Taiwan-LLM-7B-v2.0-chat", load_in_4bit=True)
+# model = AutoModelForCausalLM.from_pretrained("yentinglin/Taiwan-LLM-7B-v2.0-chat", load_in_4bit=True)
+model = AutoModelForCausalLM.from_pretrained("yentinglin/Taiwan-LLM-7B-v2.0-chat")
 
 def generate_text(prompt_text):
     # Encoding the input text to tensor

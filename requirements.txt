@@ -10,4 +10,5 @@ gunicorn
 flask
 line-bot-sdk
 huggingface_hub
+torch
 transformers ==4.35.2
