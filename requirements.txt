@@ -3,8 +3,9 @@ urllib3>=2.0.5,<3
 python_dateutil >= 2.5.3
 line-bot-sdk
 huggingface_hub
---find-links https://download.pytorch.org/whl/cpu/torch_stable.html
-torch==2.1.1
+-f https://download.pytorch.org/whl/torch_stable.html
+torch==1.8.1+cpu 
+torchvision==0.9.1+cpu
 transformers ==4.35.2
 
 accelerate==0.25.0
@@ -41,8 +42,6 @@ safetensors==0.4.1
 six==1.16.0
 tokenizers==0.15.0
 
-torchaudio==2.1.1
-torchvision==0.16.1
 tqdm==4.66.1
 Werkzeug==3.0.1
 wrapt==1.16.0
