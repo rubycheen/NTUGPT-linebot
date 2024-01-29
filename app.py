@@ -22,7 +22,7 @@ from dotenv import load_dotenv, find_dotenv
 _ = load_dotenv(find_dotenv())  # read local .env file
 
 app = Flask(__name__)
-url = 'https://dcde-140-112-90-16.ngrok-free.app/predict'
+url = 'https://9fad-140-112-90-16.ngrok-free.app/predict'
 line_bot_api = LineBotApi(os.getenv("CHANNEL_ACCESS_TOKEN"))
 handler = WebhookHandler(os.getenv("CHANNEL_SECRET"))
 
@@ -62,7 +62,7 @@ def callback():
 def handle_message(event):
     data = {'prompt': event.message.text}
     response = requests.post(url, json=data).text
-    
+
     url_s = ''
     for idx, url in enumerate(json.loads(response)['urls']):
         url_s+=f'{idx+1}. {url} \n'
