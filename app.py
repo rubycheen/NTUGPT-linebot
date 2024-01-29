@@ -16,7 +16,6 @@ from langchain.memory import ConversationBufferWindowMemory
 import os
 import openai
 import requests
-import json
 
 from dotenv import load_dotenv, find_dotenv
 _ = load_dotenv(find_dotenv())  # read local .env file
@@ -50,15 +49,15 @@ def handle_message(event):
     data = {'prompt': event.message.text}
     response = requests.post(url, json=data).text
 
-    # url_s = ''
-    # for idx, url in enumerate(json.loads(response)['urls']):
-    #     url_s+=f'{idx+1}. {url} \n'
-
-    # result = json.loads(response)['answer']+'\n參考網頁：\n'+url_s
+    answer = response.split('"answer":"')[1].split('"')[0]
+    urls = ''
+    for idx in range(4, len(response.split('"answer":"')[1].split('"')), 2):
+        urls+=response.split('"answer":"')[1].split('"')[idx]+'\n'
+    result = answer+'參考網頁:\n'+ urls
 
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=response))
+        TextSendMessage(text=result))
 
 
 if __name__ == "__main__":
