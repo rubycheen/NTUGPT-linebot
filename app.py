@@ -16,6 +16,7 @@ from langchain.memory import ConversationBufferWindowMemory
 import os
 import openai
 import requests
+import json
 
 from dotenv import load_dotenv, find_dotenv
 _ = load_dotenv(find_dotenv())  # read local .env file
@@ -61,11 +62,16 @@ def callback():
 def handle_message(event):
     data = {'prompt': event.message.text}
     response = requests.post(url, json=data).text
-    # result = conversation.predict(input=event.message.text)  # 使用模型實例進行預測
-    # result = f"{response['answer']}\n參考資料：\n{response['urls']}"
+    
+    url_s = ''
+    for idx, url in enumerate(json.loads(response)['urls']):
+        url_s+=f'{idx+1}. {url} \n'
+
+    result = json.loads(response)['answer']+'\n參考資料：\n'+url_s
+
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=response))
+        TextSendMessage(text=result))
 
 
 if __name__ == "__main__":
