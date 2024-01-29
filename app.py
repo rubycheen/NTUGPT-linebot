@@ -26,19 +26,6 @@ url = 'https://9fad-140-112-90-16.ngrok-free.app/predict'
 line_bot_api = LineBotApi(os.getenv("CHANNEL_ACCESS_TOKEN"))
 handler = WebhookHandler(os.getenv("CHANNEL_SECRET"))
 
-# Langchain 串接 OpenAI ，這裡 model 可以先選 gpt-3.5-turbo
-# llm = ChatOpenAI(temperature=0, model='gpt-3.5-turbo')
-
-# # 透過 ConversationBufferWindowMemory 快速打造一個具有「記憶力」的聊天機器人，可以記住至少五回。
-# # 通常來說 5 回還蠻夠的
-# memory = ConversationBufferWindowMemory(k=5)
-# conversation = ConversationChain(
-#     llm=llm,
-#     memory=memory,
-#     verbose=False
-# )
-
-
 @app.route("/callback", methods=['POST'])
 def callback():
     # get X-Line-Signature header value
@@ -63,15 +50,15 @@ def handle_message(event):
     data = {'prompt': event.message.text}
     response = requests.post(url, json=data).text
 
-    url_s = ''
-    for idx, url in enumerate(json.loads(response)['urls']):
-        url_s+=f'{idx+1}. {url} \n'
+    # url_s = ''
+    # for idx, url in enumerate(json.loads(response)['urls']):
+    #     url_s+=f'{idx+1}. {url} \n'
 
-    result = json.loads(response)['answer']+'\n參考資料：\n'+url_s
+    # result = json.loads(response)['answer']+'\n參考資料：\n'+url_s
 
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=result))
+        TextSendMessage(text=response))
 
 
 if __name__ == "__main__":
