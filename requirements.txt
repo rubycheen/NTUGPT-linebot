@@ -10,3 +10,4 @@ line-bot-sdk
 langchain
 openai
 python-dotenv
+json
