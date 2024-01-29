@@ -60,13 +60,12 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     data = {'prompt': event.message.text}
-    response = requests.post(url, json=data)
+    response = requests.post(url, json=data).text
     # result = conversation.predict(input=event.message.text)  # 使用模型實例進行預測
-    result = f"{response['answer']}\n參考資料：\n{response['urls']}"
+    # result = f"{response['answer']}\n參考資料：\n{response['urls']}"
     line_bot_api.reply_message(
         event.reply_token,
-        # TextSendMessage(text=))
-        TextSendMessage(text=result.text))
+        TextSendMessage(text=result))
 
 
 if __name__ == "__main__":
