@@ -67,7 +67,7 @@ def handle_message(event):
     line_bot_api.reply_message(
         event.reply_token,
         # TextSendMessage(text=f"{result['answer']}\n參考資料：\n{result['urls']}"))
-        TextSendMessage(text=result['answer']))
+        TextSendMessage(text='test'))
 
 
 if __name__ == "__main__":
