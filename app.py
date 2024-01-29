@@ -53,7 +53,7 @@ def handle_message(event):
     urls = ''
     for idx in range(4, len(response.split('"answer":"')[1].split('"')), 2):
         urls+=response.split('"answer":"')[1].split('"')[idx]+'\n'
-    result = answer+'\n參考網頁:\n\n'+ urls
+    result = answer+'\n\n參考網頁:\n'+ urls
 
     line_bot_api.reply_message(
         event.reply_token,
