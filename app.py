@@ -50,11 +50,11 @@ def handle_message(event):
     data = {'prompt': event.message.text}
     response = requests.post(url, json=data).text
 
-    url_s = ''
-    for idx, url in enumerate(json.loads(response)['urls']):
-        url_s+=f'{idx+1}. {url} \n'
+    # url_s = ''
+    # for idx, url in enumerate(json.loads(response)['urls']):
+    #     url_s+=f'{idx+1}. {url} \n'
 
-    result = json.loads(response)['answer']+'\n參考網頁：\n'+url_s
+    # result = json.loads(response)['answer']+'\n參考網頁：\n'+url_s
 
     line_bot_api.reply_message(
         event.reply_token,
