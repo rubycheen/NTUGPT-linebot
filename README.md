@@ -13,9 +13,8 @@
 
 | User Interface (LINE Bot) | Ingestion & Retrieval Flow |
 | --- | --- |
-| *[Add a screenshot of your LINE Bot chatting here]* | *[Add a system diagram or architecture flowchart here]* |
+| <img width="262" height="281" alt="截圖 2026-07-15 凌晨12 28 32" src="https://github.com/user-attachments/assets/70dcf892-2c8b-4c10-9e01-0d58ce42ad31" /> | <img width="550" height="300" alt="截圖 2026-07-15 凌晨12 27 00" src="https://github.com/user-attachments/assets/9c4577bd-359b-4b79-a165-cb61f180bd08" />|
 
----
 
 ## 🏗️ System Architecture & Core Pipelines
 
